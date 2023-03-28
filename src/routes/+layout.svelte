@@ -13,6 +13,6 @@
 
 <style>
 	main {
-		padding: 1.5rem;
+		margin: 1.5rem;
 	}
 </style>

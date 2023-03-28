@@ -1,3 +1,3 @@
 <div class="p-8">
-	<h1>Basketball.</h1>
+	<h1>Games.</h1>
 </div>
