@@ -1,4 +1,4 @@
-import type { GameDetail, SBGame } from '$lib/types/basketball';
+import type { GameDetail, SBGame, LUGame } from '$lib/types/basketball';
 
 export const transformGames = (games: SBGame[], gameDate: string) => {
 	const gameDetails: GameDetail[] = [];
@@ -21,6 +21,22 @@ export const transformGames = (games: SBGame[], gameDate: string) => {
 	}
 
 	return gameDetails;
+};
+
+export const transformGame = (game: LUGame) => {
+	if (game) {
+		const { awayTeam, homeTeam } = game;
+		const matchup = `${awayTeam.teamAbbreviation} @ ${homeTeam.teamAbbreviation}`;
+		return {
+			matchup: matchup,
+			awayTeam: awayTeam.teamAbbreviation,
+			awayPlayers: awayTeam.players,
+			homeTeam: homeTeam.teamAbbreviation,
+			homePlayers: homeTeam.players
+		};
+	}
+
+	return undefined;
 };
 
 export const formatDate = (date: string) => {

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Breadcrumb, BreadcrumbItem } from 'flowbite-svelte';
+	import { Breadcrumb, BreadcrumbItem, Heading } from 'flowbite-svelte';
 	import Matchup from './Matchup.svelte';
 	import type { PageData } from './$types';
 
@@ -23,12 +23,16 @@
 
 {#if game}
 	<Matchup
-		matchup={`${game.awayTeam.teamAbbreviation} @ ${game.homeTeam.teamAbbreviation}`}
-		awayTeam={game.awayTeam.teamAbbreviation}
-		awayStarters={game.awayTeam.players}
-		homeTeam={game.homeTeam.teamAbbreviation}
-		homeStarters={game.homeTeam.players}
+		matchup={game.matchup}
+		awayTeam={game.awayTeam}
+		awayStarters={game.awayPlayers}
+		homeTeam={game.homeTeam}
+		homeStarters={game.homePlayers}
 	/>
 {:else}
-	<h1>NO GAME</h1>
+	<div class="text-center">
+		<Heading tag="h1" class="mb-4" customSize="text-4xl font-extrabold  md:text-5xl lg:text-6xl">
+			No Game.
+		</Heading>
+	</div>
 {/if}

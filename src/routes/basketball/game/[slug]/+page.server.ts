@@ -1,6 +1,7 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import type { LUGame } from '$lib/types/basketball';
+import { transformGame } from '$lib/utils/data-helper';
 import { LINEUPS_JSON } from '$env/static/private';
 
 export const load = (async ({ params, fetch }) => {
@@ -17,6 +18,7 @@ export const load = (async ({ params, fetch }) => {
 	}
 	const { games } = await res.json();
 	const game = games.find((g: LUGame) => g.gameId === gameId);
+	const matchup = transformGame(game);
 
-	return { game };
+	return { game: matchup };
 }) satisfies PageServerLoad;
