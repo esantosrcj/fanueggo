@@ -1,15 +1,12 @@
 <script lang="ts">
-	import { Breadcrumb, BreadcrumbItem, Heading, Mark } from 'flowbite-svelte';
-	import { Listgroup } from 'flowbite-svelte';
+	import { Breadcrumb, BreadcrumbItem, Card, Heading, Mark } from 'flowbite-svelte';
 	import type { PageData } from './$types';
 
 	// From load in +page.server.ts
 	export let data: PageData;
 
-	$: links = data.games.map((g) => ({
-		name: `${g.startTime} | ${g.awayTeam} @ ${g.homeTeam}`,
-		href: `/basketball/game/${g.gameId}`
-	}));
+	// `$:` means 're-run whenever these values change'
+	$: ({ todayDate, games } = data);
 </script>
 
 <svelte:head>
@@ -23,9 +20,18 @@
 </Breadcrumb>
 
 <div class="text-center">
-	<Heading tag="h2" class="mb-4 mt-4">Today's Games <Mark>{data.todayDate}</Mark></Heading>
+	<Heading tag="h2" class="mb-4 mt-4">Today's Games <Mark>{todayDate}</Mark></Heading>
 </div>
 
-<Listgroup active items={links} let:item class="w-48 ml-8">
-	{item.name}
-</Listgroup>
+<div class="ml-12">
+	{#each games as game}
+		<Card href={`/basketball/game/${game.gameId}`} class="mb-6">
+			<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+				{game.startTime}
+			</h5>
+			<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight">
+				{game.awayTeam} @ {game.homeTeam}
+			</p>
+		</Card>
+	{/each}
+</div>
