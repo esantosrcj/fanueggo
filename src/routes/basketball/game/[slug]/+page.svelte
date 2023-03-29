@@ -1,12 +1,13 @@
 <script lang="ts">
 	import { Breadcrumb, BreadcrumbItem } from 'flowbite-svelte';
+	import Matchup from './Matchup.svelte';
 	import type { PageData } from './$types';
 
 	// From load in +page.server.ts
 	export let data: PageData;
 
 	// `$:` means 're-run whenever these values change'
-	$: ({ gameId } = data);
+	$: ({ game } = data);
 </script>
 
 <svelte:head>
@@ -20,4 +21,12 @@
 	<BreadcrumbItem>Game</BreadcrumbItem>
 </Breadcrumb>
 
-<h1>{gameId}</h1>
+{#if game}
+	<Matchup
+		matchup={`${game.awayTeam.teamAbbreviation} @ ${game.homeTeam.teamAbbreviation}`}
+		awayStarters={game.awayTeam.players}
+		homeStarters={game.homeTeam.players}
+	/>
+{:else}
+	<h1>NO GAME</h1>
+{/if}

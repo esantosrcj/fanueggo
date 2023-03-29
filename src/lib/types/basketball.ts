@@ -20,3 +20,26 @@ export interface GameDetail {
 	awayTeamId: number;
 	awayTeam: string;
 }
+
+export interface LUPlayer {
+	personId: number;
+	teamId: number;
+	firstName: string;
+	lastName: string;
+	playerName: string;
+	position: string;
+	lineupStatus: string;
+	rosterStatus: string;
+}
+
+export interface LUTeam {
+	teamId: number;
+	teamAbbreviation: string;
+	players: LUPlayer[];
+}
+
+export interface LUGame {
+	gameId: string;
+	homeTeam: LUTeam;
+	awayTeam: LUTeam;
+}
