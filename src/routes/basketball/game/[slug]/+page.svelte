@@ -24,7 +24,9 @@
 {#if game}
 	<Matchup
 		matchup={`${game.awayTeam.teamAbbreviation} @ ${game.homeTeam.teamAbbreviation}`}
+		awayTeam={game.awayTeam.teamAbbreviation}
 		awayStarters={game.awayTeam.players}
+		homeTeam={game.homeTeam.teamAbbreviation}
 		homeStarters={game.homeTeam.players}
 	/>
 {:else}

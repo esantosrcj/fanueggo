@@ -18,7 +18,7 @@
 		<TableHeadCell>Name</TableHeadCell>
 		<TableHeadCell>Position</TableHeadCell>
 	</TableHead>
-	<TableBody class="divide-y">
+	<TableBody tableBodyClass="divide-y">
 		{#each starters as player}
 			{#if player.position}
 				<TableBodyRow>
