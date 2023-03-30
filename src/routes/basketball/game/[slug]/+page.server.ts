@@ -1,7 +1,7 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import type { LUGame } from '$lib/types/basketball';
-import { transformGame } from '$lib/utils/data-helper';
+import { transformGame, formatTodayDate } from '$lib/utils/data-helper';
 import { LINEUPS_JSON } from '$env/static/private';
 
 export const load = (async ({ params, fetch }) => {
@@ -11,8 +11,10 @@ export const load = (async ({ params, fetch }) => {
 		throw error(404);
 	}
 
-	// Get game lineups
-	const res = await fetch(LINEUPS_JSON);
+	// Get today game lineups
+	const date = formatTodayDate();
+	const url = LINEUPS_JSON.replace(/today/i, date);
+	const res = await fetch(url);
 	if (!res.ok) {
 		throw error(404);
 	}
