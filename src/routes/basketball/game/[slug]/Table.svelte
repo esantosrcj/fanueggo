@@ -17,6 +17,9 @@
 		<TableHeadCell>Team</TableHeadCell>
 		<TableHeadCell>Name</TableHeadCell>
 		<TableHeadCell>Position</TableHeadCell>
+		<TableHeadCell>
+			<span class="sr-only">Chart</span>
+		</TableHeadCell>
 	</TableHead>
 	<TableBody tableBodyClass="divide-y">
 		{#each starters as player}
@@ -25,6 +28,11 @@
 					<TableBodyCell>{player.teamId}</TableBodyCell>
 					<TableBodyCell>{player.playerName}</TableBodyCell>
 					<TableBodyCell>{player.position}</TableBodyCell>
+					<TableBodyCell>
+						<a href="/tables" class="font-medium text-blue-600 hover:underline dark:text-blue-500">
+							Chart
+						</a>
+					</TableBodyCell>
 				</TableBodyRow>
 			{/if}
 		{/each}

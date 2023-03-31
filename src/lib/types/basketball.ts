@@ -43,3 +43,32 @@ export interface LUGame {
 	homeTeam: LUTeam;
 	awayTeam: LUTeam;
 }
+
+export interface GameLog {
+	SEASON_YEAR: string;
+	PLAYER_ID: number;
+	PLAYER_NAME: string;
+	TEAM_ID: number;
+	TEAM_ABBREVIATION: string;
+	GAME_ID: string;
+	GAME_DATE: string;
+	MATCHUP: string;
+	MIN: number;
+	PTS: number;
+	FGM: number;
+	FGA: number;
+	FG_PCT: number;
+	FG3M: number;
+	FG3A: number;
+	FG3_PCT: number;
+	FTM: number;
+	FTA: number;
+	FT_PCT: number;
+	OREB: number;
+	DREB: number;
+	REB: number;
+	AST: number;
+	TOV: number;
+	STL: number;
+	BLK: number;
+}
