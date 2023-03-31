@@ -29,7 +29,10 @@
 					<TableBodyCell>{player.playerName}</TableBodyCell>
 					<TableBodyCell>{player.position}</TableBodyCell>
 					<TableBodyCell>
-						<a href="/tables" class="font-medium text-blue-600 hover:underline dark:text-blue-500">
+						<a
+							href={`/basketball/player/${player.personId}`}
+							class="font-medium text-blue-600 hover:underline dark:text-blue-500"
+						>
 							Chart
 						</a>
 					</TableBodyCell>

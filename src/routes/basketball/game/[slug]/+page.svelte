@@ -15,7 +15,7 @@
 	<meta name="description" content="Basketball game" />
 </svelte:head>
 
-<Breadcrumb aria-label="Default breadcrumb example">
+<Breadcrumb aria-label="Breadcrumb">
 	<BreadcrumbItem href="/" home>Home</BreadcrumbItem>
 	<BreadcrumbItem href="/basketball">Basketball</BreadcrumbItem>
 	<BreadcrumbItem>Game</BreadcrumbItem>
