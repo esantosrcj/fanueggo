@@ -5,7 +5,7 @@ import { transformGame, formatTodayDate } from '$lib/utils/data-helper';
 import { LINEUPS_JSON } from '$env/static/private';
 
 export const load = (async ({ params, fetch }) => {
-	const gameId = params.slug;
+	const gameId = params.id;
 	if (!gameId) {
 		// No game ID present
 		throw error(404);

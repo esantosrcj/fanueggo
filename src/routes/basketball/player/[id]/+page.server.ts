@@ -2,7 +2,7 @@ import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load = (async ({ params }) => {
-	const playerId = params.slug;
+	const playerId = params.id;
 	if (!playerId) {
 		// No game ID present
 		throw error(404);
