@@ -33,7 +33,7 @@
 							href={`/basketball/player/${player.personId}`}
 							class="font-medium text-blue-600 hover:underline dark:text-blue-500"
 						>
-							Chart
+							Stats
 						</a>
 					</TableBodyCell>
 				</TableBodyRow>

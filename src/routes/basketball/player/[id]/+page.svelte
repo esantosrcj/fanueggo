@@ -18,7 +18,7 @@
 	<BreadcrumbItem href="/" home>Home</BreadcrumbItem>
 	<BreadcrumbItem href="/basketball">Basketball</BreadcrumbItem>
 	<BreadcrumbItem href="/basketball/:id">Game</BreadcrumbItem>
-	<Breadcrumb>Player</Breadcrumb>
+	<BreadcrumbItem>Player</BreadcrumbItem>
 </Breadcrumb>
 
 <div class="text-center">
