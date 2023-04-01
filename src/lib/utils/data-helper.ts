@@ -25,9 +25,10 @@ export const transformGames = (games: SBGame[], gameDate: string) => {
 
 export const transformGame = (game: LUGame) => {
 	if (game) {
-		const { awayTeam, homeTeam } = game;
+		const { gameId, awayTeam, homeTeam } = game;
 		const matchup = `${awayTeam.teamAbbreviation} @ ${homeTeam.teamAbbreviation}`;
 		return {
+			gameId: gameId,
 			matchup: matchup,
 			awayTeam: awayTeam.teamAbbreviation,
 			awayPlayers: awayTeam.players,

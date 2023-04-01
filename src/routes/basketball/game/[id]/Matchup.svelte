@@ -3,6 +3,7 @@
 	import Table from './Table.svelte';
 	import type { LUPlayer } from '$lib/types/basketball';
 
+	export let gameId: string;
 	export let matchup = 'Team 1 at Team 2';
 	export let awayTeam: string;
 	export let awayStarters: LUPlayer[];
@@ -16,12 +17,12 @@
 		<TabItem open>
 			<span slot="title">{awayTeam}</span>
 			<!-- Away Starters -->
-			<Table starters={awayStarters} />
+			<Table {gameId} starters={awayStarters} />
 		</TabItem>
 		<TabItem>
 			<span slot="title">{homeTeam}</span>
 			<!-- Home Starters -->
-			<Table starters={homeStarters} />
+			<Table {gameId} starters={homeStarters} />
 		</TabItem>
 	</Tabs>
 </div>

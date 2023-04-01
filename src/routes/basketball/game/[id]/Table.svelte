@@ -9,6 +9,7 @@
 	} from 'flowbite-svelte';
 	import type { LUPlayer } from '$lib/types/basketball';
 
+	export let gameId: string;
 	export let starters: LUPlayer[];
 </script>
 
@@ -30,7 +31,7 @@
 					<TableBodyCell>{player.position}</TableBodyCell>
 					<TableBodyCell>
 						<a
-							href={`/basketball/player/${player.personId}`}
+							href={`/basketball/player/${gameId}-${player.personId}`}
 							class="font-medium text-blue-600 hover:underline dark:text-blue-500"
 						>
 							Stats

@@ -6,7 +6,7 @@
 	export let data: PageData;
 
 	// `$:` means 're-run whenever these values change'
-	$: ({ playerId } = data);
+	$: ({ gameId, playerId } = data);
 </script>
 
 <svelte:head>
@@ -17,12 +17,13 @@
 <Breadcrumb aria-label="Breadcrumb">
 	<BreadcrumbItem href="/" home>Home</BreadcrumbItem>
 	<BreadcrumbItem href="/basketball">Basketball</BreadcrumbItem>
-	<BreadcrumbItem href="/basketball/:id">Game</BreadcrumbItem>
+	<BreadcrumbItem href={`/basketball/game/${gameId}`}>Game</BreadcrumbItem>
 	<BreadcrumbItem>Player</BreadcrumbItem>
 </Breadcrumb>
 
 <div class="text-center">
 	<Heading tag="h1" class="mb-4" customSize="text-4xl font-extrabold  md:text-5xl lg:text-6xl">
 		{playerId}
+		{gameId}
 	</Heading>
 </div>

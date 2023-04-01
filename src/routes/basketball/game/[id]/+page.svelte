@@ -23,6 +23,7 @@
 
 {#if game}
 	<Matchup
+		gameId={game.gameId}
 		matchup={game.matchup}
 		awayTeam={game.awayTeam}
 		awayStarters={game.awayPlayers}
