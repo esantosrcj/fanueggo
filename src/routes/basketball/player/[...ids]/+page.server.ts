@@ -2,13 +2,11 @@ import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 
 export const load = (async ({ params }) => {
-	const gamePlayerId = params.id;
-	if (!gamePlayerId) {
+	if (!params) {
 		// No game ID present
 		throw error(404);
 	}
+	const [playerId, gameId] = params.ids.split('/');
 
-	const [gameId, playerId] = gamePlayerId.split('-');
-
-	return { gameId, playerId };
+	return { playerId, gameId };
 }) satisfies PageServerLoad;

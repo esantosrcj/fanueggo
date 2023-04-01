@@ -31,7 +31,7 @@
 					<TableBodyCell>{player.position}</TableBodyCell>
 					<TableBodyCell>
 						<a
-							href={`/basketball/player/${gameId}-${player.personId}`}
+							href={`/basketball/player/${player.personId}/${gameId}`}
 							class="font-medium text-blue-600 hover:underline dark:text-blue-500"
 						>
 							Stats
