@@ -21,11 +21,7 @@ export const load = (async ({ params, fetch }) => {
 		// Try previous date player lineups
 		let prevDate = new Date();
 		prevDate = new Date(prevDate.setDate(prevDate.getDate() - 1));
-		console.log(prevDate);
-
 		const prevDateStr = formatTodayDate(prevDate);
-		console.log(prevDateStr);
-
 		const prevUrl = LINEUPS_JSON.replace(/date/i, prevDateStr);
 		const prevRes = await fetch(prevUrl);
 		const data = await prevRes.json();
