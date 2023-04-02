@@ -9,7 +9,7 @@ export const load = (async ({ fetch }) => {
 		const todaysScoreboard = await res.json();
 		const { gameDate, games } = todaysScoreboard.scoreboard;
 		const gamesData = transformGames(games, gameDate);
-		const todayDate = formatDate(gameDate);
+		const date = formatDate(gameDate);
 
 		// Sort by start time
 		gamesData.sort((a, b) => {
@@ -19,14 +19,14 @@ export const load = (async ({ fetch }) => {
 			return dateA - dateB;
 		});
 
-		return { todayDate, games: gamesData };
+		return { date, games: gamesData };
 	}
 
-	const todayDate = new Date().toLocaleDateString('en-US', {
+	const date = new Date().toLocaleDateString('en-US', {
 		year: 'numeric',
 		month: 'long',
 		day: 'numeric'
 	});
 
-	return { todayDate, games: [] };
+	return { date, games: [] };
 }) satisfies PageServerLoad;

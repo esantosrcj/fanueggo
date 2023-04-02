@@ -6,7 +6,7 @@
 	export let data: PageData;
 
 	// `$:` means 're-run whenever these values change'
-	$: ({ todayDate, games } = data);
+	$: ({ date, games } = data);
 </script>
 
 <svelte:head>
@@ -20,7 +20,7 @@
 </Breadcrumb>
 
 <div class="text-center">
-	<Heading tag="h2" class="mb-4 mt-4">Today's Games <Mark>{todayDate}</Mark></Heading>
+	<Heading tag="h2" class="mb-4 mt-4">Games <Mark>{date}</Mark></Heading>
 </div>
 
 <div class="ml-12">

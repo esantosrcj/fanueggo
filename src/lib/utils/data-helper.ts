@@ -90,8 +90,7 @@ export const formatDate = (date: string) => {
 	});
 };
 
-export const formatTodayDate = () => {
-	const date = new Date();
+export const formatTodayDate = (date = new Date()) => {
 	const localDate = new Date(date.getTime() - date.getTimezoneOffset() * 60 * 1000);
 	const dateStr = localDate.toISOString().split('T')[0];
 	return dateStr.replace(/-/g, '');
