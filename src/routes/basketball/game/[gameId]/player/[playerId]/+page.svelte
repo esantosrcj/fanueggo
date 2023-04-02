@@ -6,7 +6,7 @@
 	export let data: PageData;
 
 	// `$:` means 're-run whenever these values change'
-	$: ({ gameId, gameData } = data);
+	$: ({ gameId, games } = data);
 </script>
 
 <svelte:head>

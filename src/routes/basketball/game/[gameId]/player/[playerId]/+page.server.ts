@@ -1,6 +1,6 @@
 import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
-import type { GameData } from '$lib/types/basketball';
+import type { MatchupData } from '$lib/types/basketball';
 import { transformPlayerData } from '$lib/utils/data-helper';
 
 export const load = (async ({ params, fetch }) => {
@@ -14,14 +14,14 @@ export const load = (async ({ params, fetch }) => {
 	const res = await fetch(url);
 	if (res.ok) {
 		const playerStats = await res.json();
-		let gameData: GameData[] = [];
+		let recentGames: MatchupData[] = [];
 		// playerStats is array of arrays
 		if (Array.isArray(playerStats) && playerStats.length) {
-			gameData = transformPlayerData(playerStats.flat());
+			recentGames = transformPlayerData(playerStats.flat());
 		}
 
-		return { gameId, gameData };
+		return { gameId, games: recentGames };
 	}
 
-	return { gameId, gameData: [] };
+	return { gameId, games: [] };
 }) satisfies PageServerLoad;

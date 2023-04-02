@@ -73,9 +73,9 @@ export interface GameLog {
 	BLK: number;
 }
 
-interface PlayerData {
-	playerId: number;
-	playerName: string;
+export interface MatchupData {
+	gameId: string;
+	matchup: string;
 	min: number;
 	pts: number;
 	fgm: number;
@@ -89,13 +89,4 @@ interface PlayerData {
 	tov: number;
 	stl: number;
 	blk: number;
-	team: string;
-}
-
-export interface GameData {
-	gameId: string;
-	matchup: string;
-	teamId: number;
-	team: string;
-	players: PlayerData[];
 }
