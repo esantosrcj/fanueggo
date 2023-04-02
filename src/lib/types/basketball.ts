@@ -72,3 +72,30 @@ export interface GameLog {
 	STL: number;
 	BLK: number;
 }
+
+interface PlayerData {
+	playerId: number;
+	playerName: string;
+	min: number;
+	pts: number;
+	fgm: number;
+	fga: number;
+	fgpct: number;
+	fg3m: number;
+	fg3a: number;
+	fg3pct: number;
+	reb: number;
+	ast: number;
+	tov: number;
+	stl: number;
+	blk: number;
+	team: string;
+}
+
+export interface GameData {
+	gameId: string;
+	matchup: string;
+	teamId: number;
+	team: string;
+	players: PlayerData[];
+}

@@ -6,7 +6,7 @@
 	export let data: PageData;
 
 	// `$:` means 're-run whenever these values change'
-	$: ({ gameId, playerId } = data);
+	$: ({ gameId, gameData } = data);
 </script>
 
 <svelte:head>
@@ -24,6 +24,5 @@
 <div class="text-center">
 	<Heading tag="h1" class="mb-4" customSize="text-4xl font-extrabold  md:text-5xl lg:text-6xl">
 		{gameId}
-		{playerId}
 	</Heading>
 </div>
