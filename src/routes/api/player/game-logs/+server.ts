@@ -1,7 +1,8 @@
 import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import type { GameLog } from '$lib/types/basketball';
+import type { GameLog, ResultSet } from '$lib/types/basketball';
 import { playerGameLogsParams } from '$lib/utils/url-params';
+import { transformToJSON } from '$lib/utils/data-helper';
 import { APIHeaders } from '$lib/constants/stats';
 import { PUBLIC_STATS_API } from '$env/static/public';
 
@@ -18,19 +19,12 @@ export const GET = (async ({ url }) => {
 
 	if (res.ok) {
 		const { resultSets } = await res.json();
-		const dataRows = resultSets[0].rowSet; // Array of arrays
-		const headers = resultSets[0].headers;
-		const jsonStrArr: string[] = [];
-		dataRows.forEach((row: (string | number)[]) => {
-			// row is an array
-			const keyValPairs: string[] = [];
-			row.forEach((rowData, index) => {
-				const value = typeof rowData === 'string' ? `"${rowData}"` : rowData;
-				keyValPairs.push(`"${headers[index]}":${value}`);
-			});
-			jsonStrArr.push(`{${keyValPairs.join(',')}}`);
-		});
-		const gameLogs: GameLog[] = jsonStrArr.map((game) => JSON.parse(game));
+		const playerGameLogs = resultSets.find((r: ResultSet) => r.name === 'PlayerGameLogs');
+		let gameLogs: GameLog[] = [];
+		if (playerGameLogs) {
+			const { headers, rowSet } = playerGameLogs;
+			gameLogs = transformToJSON(headers, rowSet);
+		}
 
 		return json(gameLogs);
 	}
