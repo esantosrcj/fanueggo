@@ -1,4 +1,4 @@
-import type { GameDetail, SBGame, LUGame, GameLog } from '$lib/types/basketball';
+import type { Row, GameDetail, SBGame, LUGame, GameLog } from '$lib/types/basketball';
 
 export const transformGames = (games: SBGame[], gameDate: string) => {
 	const gameDetails: GameDetail[] = [];
@@ -78,6 +78,21 @@ export const transformPlayerData = (gameLogs: GameLog[]) => {
 			blk
 		};
 	});
+};
+
+export const transformToJSON = (headers: string[], rowSet: Row[]) => {
+	const jsonStrArr: string[] = [];
+	rowSet.forEach((row: Row) => {
+		// row is an array
+		const keyValPairs: string[] = [];
+		row.forEach((rowData, index) => {
+			const value = typeof rowData === 'string' ? `"${rowData}"` : rowData;
+			keyValPairs.push(`"${headers[index]}":${value}`);
+		});
+		jsonStrArr.push(`{${keyValPairs.join(',')}}`);
+	});
+
+	return jsonStrArr.map((str) => JSON.parse(str));
 };
 
 export const formatDate = (date: string) => {

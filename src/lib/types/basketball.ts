@@ -93,3 +93,11 @@ export interface MatchupData {
 	stl: number;
 	blk: number;
 }
+
+export type Row = (string | number)[];
+
+export interface ResultSet {
+	name: string;
+	headers: string[];
+	rowSet: Row[];
+}

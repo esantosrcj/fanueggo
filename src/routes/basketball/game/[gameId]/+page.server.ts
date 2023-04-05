@@ -41,8 +41,6 @@ export const load = (async ({ params, fetch }) => {
 		throw error(404);
 	}
 
-	// Get player season stat averages
-
 	const game = games.find((g: LUGame) => g.gameId === gameId);
 	if (game) {
 		const matchup = transformGame(game);
