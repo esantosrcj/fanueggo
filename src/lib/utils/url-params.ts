@@ -59,3 +59,59 @@ export const playerGameLogsParams = (
 
 	return urlParams.join('&');
 };
+
+export const teamPlayerDashboardParams = (
+	teamID: number,
+	dateFrom = '',
+	dateTo = '',
+	gameSegment = '',
+	lastNGames = 0,
+	leagueID = '00',
+	location = '',
+	measureType = 'Base',
+	month = 0,
+	oppTeamID = 0,
+	opponentTeamID = 0,
+	outcome = '',
+	poRound = 0,
+	paceAdjust = 'N',
+	perMode = 'PerGame',
+	period = 0,
+	plusMinus = 'N',
+	rank = 'N',
+	season = '2022-23',
+	seasonSegment = '',
+	seasonType = 'Regular Season',
+	shotClockRange = '',
+	vsConference = '',
+	vsDivision = ''
+) => {
+	const urlParams = [
+		`TeamID=${teamID}`,
+		`DateFrom=${dateFrom}`,
+		`DateTo=${dateTo}`,
+		`GameSegment=${gameSegment}`,
+		`LastNGames=${lastNGames}`,
+		`LeagueID=${leagueID}`,
+		`Location=${location}`,
+		`MeasureType=${measureType}`,
+		`Month=${month}`,
+		`OppTeamID=${oppTeamID}`,
+		`OpponentTeamID=${opponentTeamID}`,
+		`Outcome=${outcome}`,
+		`PORound=${poRound}`,
+		`PaceAdjust=${paceAdjust}`,
+		`PerMode=${perMode}`,
+		`Period=${period}`,
+		`PlusMinus=${plusMinus}`,
+		`Rank=${rank}`,
+		`Season=${season}`,
+		`SeasonSegment=${seasonSegment}`,
+		`SeasonType=${seasonType}`,
+		`ShotClockRange=${shotClockRange}`,
+		`VsConference=${vsConference}`,
+		`VsDivision=${vsDivision}`
+	];
+
+	return urlParams.join('&');
+};
