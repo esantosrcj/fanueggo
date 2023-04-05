@@ -25,16 +25,18 @@
 
 <div class="ml-12">
 	{#if games.length}
-		{#each games as game}
-			<Card href={`/basketball/game/${game.gameId}`} class="mb-6">
-				<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-					{game.startTime}
-				</h5>
-				<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight">
-					{game.awayTeam} @ {game.homeTeam}
-				</p>
-			</Card>
-		{/each}
+		<div class="grid grid-cols-3 gap-2">
+			{#each games as game}
+				<Card href={`/basketball/game/${game.gameId}`} class="mb-6">
+					<h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+						{game.startTime}
+					</h5>
+					<p class="font-normal text-gray-700 dark:text-gray-400 leading-tight">
+						{game.awayTeam} @ {game.homeTeam}
+					</p>
+				</Card>
+			{/each}
+		</div>
 	{:else}
 		<div class="text-center">
 			<Heading tag="h3">No Games Scheduled</Heading>
