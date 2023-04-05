@@ -15,7 +15,6 @@
 </svelte:head>
 
 <Breadcrumb aria-label="App breadcrumb">
-	<BreadcrumbItem href="/" home>Home</BreadcrumbItem>
 	<BreadcrumbItem>Basketball</BreadcrumbItem>
 </Breadcrumb>
 

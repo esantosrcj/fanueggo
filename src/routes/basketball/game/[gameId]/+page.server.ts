@@ -2,7 +2,7 @@ import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import type { LUGame } from '$lib/types/basketball';
 import { transformGame, formatTodayDate } from '$lib/utils/data-helper';
-import { LINEUPS_JSON } from '$env/static/private';
+import { LINEUPS_JSON, SCOREBOARD_JSON } from '$env/static/private';
 
 export const load = (async ({ params, fetch }) => {
 	const { gameId } = params;
@@ -11,12 +11,20 @@ export const load = (async ({ params, fetch }) => {
 		throw error(404);
 	}
 
+	let date;
+	const sbRes = await fetch(SCOREBOARD_JSON);
+	if (sbRes.ok) {
+		const todaysScoreboard = await sbRes.json();
+		const { gameDate } = todaysScoreboard.scoreboard;
+		date = gameDate.replace(/-/g, '');
+	} else {
+		date = formatTodayDate();
+	}
+
 	// Get today game lineups
-	const date = formatTodayDate();
+	let games: LUGame[] = [];
 	const url = LINEUPS_JSON.replace(/date/i, date);
 	const res = await fetch(url);
-
-	let games: LUGame[] = [];
 	if (res.status === 404) {
 		// Try previous date player lineups
 		let prevDate = new Date();
