@@ -9,7 +9,7 @@ export const load = (async ({ params, fetch }) => {
 		throw error(404);
 	}
 
-	const url = `/api/player-data?playerId=${playerId}`;
+	const url = `/api/player/game-logs?playerId=${playerId}`;
 	const res = await fetch(url);
 	if (res.ok) {
 		const gameLogs: GameLog[] = await res.json();

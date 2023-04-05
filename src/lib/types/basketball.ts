@@ -44,15 +44,9 @@ export interface LUGame {
 	awayTeam: LUTeam;
 }
 
-export interface GameLog {
-	SEASON_YEAR: string;
+export interface PlayerStats {
 	PLAYER_ID: number;
 	PLAYER_NAME: string;
-	TEAM_ID: number;
-	TEAM_ABBREVIATION: string;
-	GAME_ID: string;
-	GAME_DATE: string;
-	MATCHUP: string;
 	MIN: number;
 	PTS: number;
 	FGM: number;
@@ -71,6 +65,15 @@ export interface GameLog {
 	TOV: number;
 	STL: number;
 	BLK: number;
+}
+
+export interface GameLog extends PlayerStats {
+	SEASON_YEAR: string;
+	TEAM_ID: number;
+	TEAM_ABBREVIATION: string;
+	GAME_ID: string;
+	GAME_DATE: string;
+	MATCHUP: string;
 }
 
 export interface MatchupData {
